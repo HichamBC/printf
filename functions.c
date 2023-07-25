@@ -59,6 +59,44 @@ int print_percent(va_list arg)
 }
 
 /**
+ * print_integer - prints a number(s).
+ * @arg: number(s) to be printed.
+ *
+ * Return: how many numbers were printed.
+ */
+
+int print_integer(va_list arg)
+{
+	int n = va_arg(arg, int);
+	int len = 0;
+	int divisor = 1;
+
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n *= -1;
+		len += 1;
+	}
+
+	while (n / divisor >= 10)
+	{
+		divisor *= 10;
+	}
+
+	while (divisor != 0)
+	{
+		char num = '0' + (n / divisor);
+
+		write(1, &num, 1);
+		n %= divisor;
+		divisor /= 10;
+		len += 1;
+	}
+
+	return (len);
+}
+
+/**
  * print_func - links the compatible print function with its specifier.
  * @format: the format specifier.
  *
@@ -70,6 +108,8 @@ int (*print_func(char format))(va_list)
 	print_t pf[] = {
 		{'c', print_char},
 		{'s', print_string},
+		{'d', print_integer},
+		{'i', print_integer},
 		{'%', print_percent},
 		{'\0', NULL}
 	};
