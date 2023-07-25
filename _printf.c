@@ -4,6 +4,10 @@
 #include "main.h"
 
 /**
+ * _printf - produces output according to a format.
+ * @format: character string.
+ *
+ * Return: number of characters printed or -1 if fail.
  */
 
 int _printf(const char *format, ...)

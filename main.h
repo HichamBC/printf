@@ -5,6 +5,9 @@
 
 int _printf(const char *format, ...);
 /**
+ * struct print - has the format specifier and function pointer as members.
+ * @type: format specifier.
+ * @fn: function pointer to a print function.
  */
 
 typedef struct print
