@@ -129,4 +129,4 @@ int (*print_func(char format))(va_list)
 		ptr++;
 	}
 	return (NULL);
-}
+
