@@ -32,6 +32,7 @@ int print_string(va_list arg)
 
 	if (s == NULL)
 		s = "(null)";
+
 	while (*s != '\0')
 	{
 		write(1, s, 1);
@@ -72,27 +73,22 @@ int print_integer(va_list arg)
 
 	if (n == 0)
 	{
-		char zero = '0';
-
-		write(1, &zero, 1);
+		write(1, "0", 1);
 		return (1);
 	}
 
 	if (n < 0)
 	{
-		char minus = '-';
-
-		write(1, &minus, 1);
+		write(1, "-", 1);
 		n *= -1;
 		len += 1;
 	}
-	int temp = n;
 
-	while (temp / 10 != 0)
+	while (n / divisor >= 10)
 	{
 		divisor *= 10;
-		temp /= 10;
 	}
+
 	while (divisor != 0)
 	{
 		char num = '0' + (n / divisor);
