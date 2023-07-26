@@ -71,6 +71,12 @@ int print_integer(va_list arg)
 	int len = 0;
 	int divisor = 1;
 
+	if (n == 0)
+	{
+		write(1, "0", 1);
+		return (1);
+	}
+
 	if (n < 0)
 	{
 		write(1, "-", 1);
